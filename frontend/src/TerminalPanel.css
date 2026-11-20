@@ -1,0 +1,207 @@
+.terminal-panel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  color: #f2f2f2;
+  background: #000;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+.terminal-connection-bar,
+.terminal-mode-buttons,
+.terminal-auth-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-connection-bar {
+  min-height: 34px;
+  padding: 4px 8px;
+  border-bottom: 1px solid #222226;
+  background: #09090b;
+}
+
+.terminal-mode-buttons button {
+  min-width: 42px;
+  border: 1px solid #333;
+  padding: 4px 8px;
+  color: #a1a1aa;
+  background: #000;
+  font: 700 11px var(--font-mono, monospace);
+  cursor: pointer;
+}
+
+.terminal-mode-buttons button.is-active {
+  border-color: #fff;
+  color: #000;
+  background: #fff;
+}
+
+.terminal-mode-buttons button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.terminal-state {
+  overflow: hidden;
+  flex: 1;
+  color: #a1a1aa;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.terminal-state-connected,
+.terminal-state-running,
+.terminal-state-finished { color: #22c55e; }
+.terminal-state-connecting,
+.terminal-state-checking { color: #ff8a42; }
+.terminal-state-disconnected,
+.terminal-state-error,
+.terminal-state-unavailable { color: #ff6868; }
+
+.console-status-text {
+  color: #a1a1aa;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.console-status-text[data-connection-state="connected"] { color: #22c55e; }
+.console-status-text[data-connection-state="connecting"] { color: #ff8a42; }
+.console-status-text[data-connection-state="disconnected"],
+.console-status-text[data-connection-state="error"],
+.console-status-text[data-connection-state="unavailable"] { color: #ef4444; }
+
+.terminal-auth-form {
+  flex-wrap: wrap;
+  padding: 7px 9px;
+  border-bottom: 1px solid #222226;
+  background: #09090b;
+}
+
+.terminal-auth-form label {
+  display: grid;
+  flex: 1 1 120px;
+  gap: 3px;
+  color: #a1a1aa;
+  font: 700 11px var(--font-mono, monospace);
+}
+
+.terminal-auth-form input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid #333;
+  border-radius: 0;
+  padding: 5px 7px;
+  outline: none;
+  color: #fff;
+  background: #000;
+  font: 12px var(--font-mono, monospace);
+}
+
+.terminal-auth-form input:focus-visible,
+.terminal-mode-buttons button:focus-visible,
+.terminal-hostkey button:focus-visible {
+  outline: 2px solid #ff7a33;
+  outline-offset: 1px;
+}
+
+.terminal-auth-form button {
+  min-height: 29px;
+  white-space: nowrap;
+}
+
+.terminal-git-auth label { flex-basis: 180px; }
+
+.terminal-backend-notice {
+  display: grid;
+  gap: 4px;
+  padding: 7px 10px;
+  border-bottom: 1px solid #222226;
+  color: #bcbcbc;
+  background: #09090b;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.terminal-backend-notice strong { color: #ff7a33; }
+
+.terminal-error {
+  padding: 5px 10px;
+  color: #ff6868;
+  background: #180707;
+  font-size: 11px;
+}
+
+.terminal-surface {
+  flex: 1;
+  min-width: 0;
+  min-height: 160px;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 9px;
+  background: #000;
+}
+
+.terminal-surface .xterm {
+  height: 100%;
+}
+
+.terminal-surface .xterm-viewport {
+  overflow-y: auto !important;
+  scrollbar-color: #424242 #000;
+}
+
+.terminal-hostkey-backdrop {
+  position: fixed;
+  z-index: 1200;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgb(0 0 0 / 78%);
+}
+
+.terminal-hostkey {
+  display: grid;
+  width: min(520px, 100%);
+  gap: 12px;
+  border: 1px solid #ff7a33;
+  padding: 18px;
+  color: #eee;
+  background: #09090b;
+  box-shadow: 0 0 28px rgb(255 85 0 / 20%);
+}
+
+.terminal-hostkey h2,
+.terminal-hostkey p { margin: 0; }
+
+.terminal-hostkey h2 {
+  font: 700 16px var(--font-heavy, sans-serif);
+}
+
+.terminal-hostkey p {
+  color: #b8b8b8;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.terminal-hostkey code {
+  overflow-wrap: anywhere;
+  border: 1px solid #292929;
+  padding: 9px;
+  color: #fff;
+  background: #000;
+  font: 12px/1.7 var(--font-mono, monospace);
+}
+
+.terminal-hostkey > div {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+}

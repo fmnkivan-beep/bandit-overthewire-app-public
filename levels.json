@@ -1,0 +1,422 @@
+[
+  {
+    "id": 0,
+    "code": "Level 0",
+    "title": "Уровень 0 — Подключение по SSH",
+    "goal": "Подключись к игровому серверу Bandit по SSH на порту 2220 под именем bandit0.",
+    "commands": [
+      "ssh"
+    ],
+    "hint": "Параметр -p задаёт порт SSH. Используй его при подключении к серверу.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit0.html"
+  },
+  {
+    "id": 1,
+    "code": "0 → 1",
+    "title": "Уровень 0 → Уровень 1",
+    "goal": "Пароль для bandit1 лежит в файле readme в домашней директории. Прочитайте его и используйте для входа на следующий уровень.",
+    "commands": [
+      "ls",
+      "cat",
+      "file",
+      "pwd"
+    ],
+    "hint": "Используйте команду cat readme.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit1.html"
+  },
+  {
+    "id": 2,
+    "code": "1 → 2",
+    "title": "Уровень 1 → Уровень 2",
+    "goal": "Пароль хранится в файле с именем - (дефис) в домашней папке.",
+    "commands": [
+      "ls",
+      "cat",
+      "file"
+    ],
+    "hint": "Оболочка считает дефис началом флага. Укажите путь явно через cat ./- или перенаправление cat < -.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit2.html"
+  },
+  {
+    "id": 3,
+    "code": "2 → 3",
+    "title": "Уровень 2 → Уровень 3",
+    "goal": "Пароль лежит в файле spaces in this filename с пробелами в названии.",
+    "commands": [
+      "ls",
+      "cat"
+    ],
+    "hint": "Оберните имя в кавычки или экранируйте слэшем: cat \"spaces in this filename\".",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit3.html"
+  },
+  {
+    "id": 4,
+    "code": "3 → 4",
+    "title": "Уровень 3 → Уровень 4",
+    "goal": "Пароль лежит в скрытом файле внутри папки inhere.",
+    "commands": [
+      "ls",
+      "cd",
+      "cat"
+    ],
+    "hint": "Скрытые файлы в Linux начинаются с точки. Используйте флаг ls -la inhere.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit4.html"
+  },
+  {
+    "id": 5,
+    "code": "4 → 5",
+    "title": "Уровень 4 → Уровень 5",
+    "goal": "Пароль хранится в единственном текстовом (ASCII human-readable) файле в папке inhere среди бинарного мусора.",
+    "commands": [
+      "file",
+      "cat",
+      "ls"
+    ],
+    "hint": "Проверьте типы всех файлов командой file inhere/* и найдите ASCII text.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit5.html"
+  },
+  {
+    "id": 6,
+    "code": "5 → 6",
+    "title": "Уровень 5 → Уровень 6",
+    "goal": "Пароль в папке inhere: файл человекочитаемый, не исполняемый, размером ровно 1033 байта.",
+    "commands": [
+      "find",
+      "cat",
+      "file"
+    ],
+    "hint": "Команда поиска по размеру в байтах: find inhere -type f -size 1033c ! -executable.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit6.html"
+  },
+  {
+    "id": 7,
+    "code": "6 → 7",
+    "title": "Уровень 6 → Уровень 7",
+    "goal": "Пароль где-то на диске: владелец — bandit7, группа — bandit6, размер — ровно 33 байта.",
+    "commands": [
+      "find",
+      "cat"
+    ],
+    "hint": "Ищите от корня и глушите ошибки: find / -user bandit7 -group bandit6 -size 33c 2>/dev/null.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit7.html"
+  },
+  {
+    "id": 8,
+    "code": "7 → 8",
+    "title": "Уровень 7 → Уровень 8",
+    "goal": "Пароль в файле data.txt на строке рядом со словом millionth.",
+    "commands": [
+      "grep"
+    ],
+    "hint": "Используйте grep: grep millionth data.txt.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit8.html"
+  },
+  {
+    "id": 9,
+    "code": "8 → 9",
+    "title": "Уровень 8 → Уровень 9",
+    "goal": "Пароль в data.txt — единственная уникальная строка, не повторяющаяся дважды.",
+    "commands": [
+      "sort",
+      "uniq"
+    ],
+    "hint": "Команда uniq требует отсортированного ввода: sort data.txt | uniq -u.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit9.html"
+  },
+  {
+    "id": 10,
+    "code": "9 → 10",
+    "title": "Уровень 9 → Уровень 10",
+    "goal": "Пароль в бинарном файле data.txt, перед ним идут несколько символов '='.",
+    "commands": [
+      "strings",
+      "grep"
+    ],
+    "hint": "Извлеките текст через strings: strings data.txt | grep ==",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit10.html"
+  },
+  {
+    "id": 11,
+    "code": "10 → 11",
+    "title": "Уровень 10 → Уровень 11",
+    "goal": "Пароль хранится в data.txt в кодировке Base64.",
+    "commands": [
+      "base64"
+    ],
+    "hint": "Декодирование: base64 -d data.txt.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit11.html"
+  },
+  {
+    "id": 12,
+    "code": "11 → 12",
+    "title": "Уровень 11 → Уровень 12",
+    "goal": "Пароль в data.txt зашифрован шифром Цезаря (сдвиг ROT13 на 13 символов).",
+    "commands": [
+      "tr"
+    ],
+    "hint": "Используйте трансляцию символов: cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit12.html"
+  },
+  {
+    "id": 13,
+    "code": "12 → 13",
+    "title": "Уровень 12 → Уровень 13",
+    "goal": "Файл data.txt — это hex-дамп файла, сжатого много раз (gzip, bzip2, tar).",
+    "commands": [
+      "xxd",
+      "file",
+      "tar",
+      "gzip",
+      "bzip2"
+    ],
+    "hint": "Восстановите бинарник через xxd -r data.txt > file и по очереди распаковывайте.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit13.html"
+  },
+  {
+    "id": 14,
+    "code": "13 → 14",
+    "title": "Уровень 13 → Уровень 14",
+    "goal": "Пароль лежит в /etc/bandit_pass/bandit14. Для доступа дан приватный ключ sshkey.private.",
+    "commands": [
+      "ssh"
+    ],
+    "hint": "Подключитесь локально ключом: ssh -i sshkey.private bandit14@localhost -p 2220.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit14.html"
+  },
+  {
+    "id": 15,
+    "code": "14 → 15",
+    "title": "Уровень 14 → Уровень 15",
+    "goal": "Отправьте пароль текущего уровня на порт 30000 локалхоста для получения следующего.",
+    "commands": [
+      "nc",
+      "telnet"
+    ],
+    "hint": "Используйте netcat: echo [пароль текущего уровня] | nc localhost 30000.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit15.html"
+  },
+  {
+    "id": 16,
+    "code": "15 → 16",
+    "title": "Уровень 15 → Уровень 16",
+    "goal": "Отправьте пароль на порт 30001 через защищенное TLS/SSL соединение.",
+    "commands": [
+      "openssl"
+    ],
+    "hint": "Используйте openssl s_client: openssl s_client -connect localhost:30001.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit16.html"
+  },
+  {
+    "id": 17,
+    "code": "16 → 17",
+    "title": "Уровень 16 → Уровень 17",
+    "goal": "Просканируйте порты 31000-32000, найдите сервис с SSL и отправьте текущий пароль для получения RSA-ключа.",
+    "commands": [
+      "nmap",
+      "openssl"
+    ],
+    "hint": "Сканирование портов nmap -p 31000-32000 localhost (нужный SSL-порт — 31790).",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit17.html"
+  },
+  {
+    "id": 18,
+    "code": "17 → 18",
+    "title": "Уровень 17 → Уровень 18",
+    "goal": "Сравните файлы passwords.old и passwords.new — паролем является единственная измененная строка.",
+    "commands": [
+      "diff"
+    ],
+    "hint": "Выполните команду diff passwords.old passwords.new.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit18.html"
+  },
+  {
+    "id": 19,
+    "code": "18 → 19",
+    "title": "Уровень 18 → Уровень 19",
+    "goal": "При логине файл .bashrc сразу разрывает соединение. Прочитайте readme без входа в интерактивную оболочку.",
+    "commands": [
+      "ssh",
+      "cat"
+    ],
+    "hint": "Передайте команду прямо в аргумент SSH: ssh bandit18@... -p 2220 cat readme.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit19.html"
+  },
+  {
+    "id": 20,
+    "code": "19 → 20",
+    "title": "Уровень 19 → Уровень 20",
+    "goal": "Запустите setuid-бинарник ./bandit20-do от имени bandit20 для чтения пароля.",
+    "commands": [
+      "./bandit20-do"
+    ],
+    "hint": "Выполните: ./bandit20-do cat /etc/bandit_pass/bandit20.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit20.html"
+  },
+  {
+    "id": 21,
+    "code": "20 → 21",
+    "title": "Уровень 20 → Уровень 21",
+    "goal": "Бинарник suconnect подключается к вашему сокету, проверяет пароль и возвращает следующий.",
+    "commands": [
+      "nc",
+      "./suconnect"
+    ],
+    "hint": "Запустите слушатель nc -l -p 4444 и параллельно вызовите ./suconnect 4444.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit21.html"
+  },
+  {
+    "id": 22,
+    "code": "21 → 22",
+    "title": "Уровень 21 → Уровень 22",
+    "goal": "В /etc/cron.d/ регулярно выполняется скрипт, записывающий пароль в /tmp.",
+    "commands": [
+      "cat",
+      "ls",
+      "cron"
+    ],
+    "hint": "Изучите /usr/bin/cronjob_bandit22.sh и найдите путь к сформированному файлу в /tmp.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit22.html"
+  },
+  {
+    "id": 23,
+    "code": "22 → 23",
+    "title": "Уровень 22 → Уровень 23",
+    "goal": "Скрипт cron вычисляет хэш MD5 строки 'I am user bandit23' и сохраняет пароль по этому имени в /tmp.",
+    "commands": [
+      "md5sum",
+      "cat"
+    ],
+    "hint": "Вычислите хэш через echo I am user bandit23 | md5sum и прочитайте файл в /tmp.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit23.html"
+  },
+  {
+    "id": 24,
+    "code": "23 → 24",
+    "title": "Уровень 23 → Уровень 24",
+    "goal": "Планировщик каждую минуту запускает все скрипты из /var/spool/bandit24/foo от имени bandit24.",
+    "commands": [
+      "chmod",
+      "cp",
+      "cat"
+    ],
+    "hint": "Положите в папку foo shell-скрипт, копирующий /etc/bandit_pass/bandit24 в вашу папку /tmp.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit24.html"
+  },
+  {
+    "id": 25,
+    "code": "24 → 25",
+    "title": "Уровень 24 → Уровень 25",
+    "goal": "Сервис на порту 30002 ожидает пароль уровня 24 и четырехзначный PIN (0000-9999).",
+    "commands": [
+      "nc",
+      "for"
+    ],
+    "hint": "Сделайте bash-цикл for i in {0000..9999} и отправьте вывод в nc localhost 30002.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit25.html"
+  },
+  {
+    "id": 26,
+    "code": "25 → 26",
+    "title": "Уровень 25 → Уровень 26",
+    "goal": "Пользователю bandit26 вместо bash выставлена оболочка more. Сожмите окно, чтобы вызвать интерактивное меню.",
+    "commands": [
+      "more",
+      "vi"
+    ],
+    "hint": "Уменьшите размер окна до нескольких строк, в more нажмите 'v' для вызова vi, затем :e /etc/bandit_pass/bandit26.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit26.html"
+  },
+  {
+    "id": 27,
+    "code": "26 → 27",
+    "title": "Уровень 26 → Уровень 27",
+    "goal": "Из vi смените командную оболочку (:set shell=/bin/bash) и вызовите ./bandit27-do.",
+    "commands": [
+      ":shell",
+      "./bandit27-do"
+    ],
+    "hint": "Вызовите :shell, затем выполните ./bandit27-do cat /etc/bandit_pass/bandit27.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit27.html"
+  },
+  {
+    "id": 28,
+    "code": "27 → 28",
+    "title": "Уровень 27 → Уровень 28",
+    "goal": "Клонируйте git-репозиторий с порта 2220 и прочитайте README.",
+    "commands": [
+      "git clone"
+    ],
+      "hint": "Введите git clone без адреса: приложение подключится к учебному серверу по SSH и сохранит копию в рабочей папке.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit28.html"
+  },
+  {
+    "id": 29,
+    "code": "28 → 29",
+    "title": "Уровень 28 → Уровень 29",
+    "goal": "Пароль удален из последнего коммита. Найдите его в истории репозитория.",
+    "commands": [
+      "git log",
+      "git show"
+    ],
+    "hint": "Выполните git log -p для просмотра изменений во всех коммитах.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit29.html"
+  },
+  {
+    "id": 30,
+    "code": "29 → 30",
+    "title": "Уровень 29 → Уровень 30",
+    "goal": "Ветка master пуста. Проверьте скрытые и удаленные ветки проекта.",
+    "commands": [
+      "git branch",
+      "git checkout"
+    ],
+      "hint": "Проверьте все ветки командой git branch -a, затем переключитесь на dev: git checkout dev.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit30.html"
+  },
+  {
+    "id": 31,
+    "code": "30 → 31",
+    "title": "Уровень 30 → Уровень 31",
+    "goal": "В ветках пароля нет. Проверьте теги (tags) в git-репозитории.",
+    "commands": [
+      "git tag",
+      "git show"
+    ],
+    "hint": "Команда git tag покажет тег secret. Прочитайте его: git show secret.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit31.html"
+  },
+  {
+    "id": 32,
+    "code": "31 → 32",
+    "title": "Уровень 31 → Уровень 32",
+    "goal": "Отправьте git push файла key.txt в ветку master (учитывая блокировку в .gitignore).",
+    "commands": [
+      "git add -f",
+      "git push"
+    ],
+      "hint": "Создайте key.txt с текстом May I come in., затем выполните по очереди git add -f key.txt, git commit -m \"add key\" и git push origin master.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit32.html"
+  },
+  {
+    "id": 33,
+    "code": "32 → 33",
+    "title": "Уровень 32 → Уровень 33",
+    "goal": "Оболочка переводит все буквы в верхний регистр (UPPERCASE SHELL). Обойдите ограничение.",
+    "commands": [
+      "$0"
+    ],
+    "hint": "Переменная $0 содержит имя текущего интерпретатора без букв и запустит /bin/sh.",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit33.html"
+  },
+  {
+    "id": 34,
+    "code": "33 → 34",
+    "title": "Уровень 33 → Уровень 34 (Финал)",
+    "goal": "Все доступные этапы OverTheWire: Bandit пройдены!",
+    "commands": [
+      "cat README.txt"
+    ],
+    "hint": "Финальный рубеж. Поздравляем с прохождением всех заданий!",
+    "sourceUrl": "https://overthewire.org/wargames/bandit/bandit34.html"
+  }
+]
